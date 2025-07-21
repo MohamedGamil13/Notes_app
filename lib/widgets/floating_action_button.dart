@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/widgets/add_note_bottom_action.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
@@ -12,7 +14,10 @@ class CustomFloatingActionButton extends StatelessWidget {
         showModalBottomSheet(
           context: context,
           builder: (context) {
-            return const AddNoteBottomAction();
+            return BlocProvider(
+              create: (context) => AddNoteCubit(),
+              child: const AddNoteBottomAction(),
+            );
           },
         );
       },
